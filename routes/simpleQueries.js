@@ -173,8 +173,8 @@ router.get('/6', async (req, res, next) => {
 
         const result = await connection.execute(
             `SELECT s.studentname FROM courses c, student s, enrollsin e
-            WHERE c.coursecode = 'PHY101' 
-            AND s.studentid = 808127186`
+                WHERE c.coursecode = 'PHY101' 
+                AND s.studentid = 808127186`
             //[103],  // bind value for :id
         );
         console.log(result.rows);
@@ -204,7 +204,7 @@ router.get('/7', async (req, res, next) => {
 
         const result = await connection.execute(
             `SELECT coursetitle FROM courses
-            WHERE startdate = '2020-09-08'`
+                WHERE startdate = '2020-09-08'`
             //[103],  // bind value for :id
         );
         console.log(result.rows);

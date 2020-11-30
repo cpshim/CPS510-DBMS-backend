@@ -16,9 +16,9 @@ router.get('/1', async (req, res, next) => {
 
         const result = await connection.execute(
             `SELECT ProfId AS Id_Of_PhysicsProf FROM teaches
-            WHERE CourseCode = 'PHY101'
+                WHERE CourseCode = 'PHY101'
                 OR CourseCode= 'PHY201'
-            ORDER BY ProfId`
+                ORDER BY ProfId`
             //[103],  // bind value for :id
         );
         console.log(result.rows);
@@ -49,9 +49,9 @@ router.get('/2', async (req, res, next) => {
 
         const result = await connection.execute(
             `SELECT DISTINCT ProfId AS Id_Of_PhysicsProf FROM teaches
-            WHERE CourseCode = 'PHY101'
+                WHERE CourseCode = 'PHY101'
                 OR CourseCode= 'PHY201'
-            ORDER BY ProfId`
+                ORDER BY ProfId`
             //[103],  // bind value for :id
         );
         console.log(result.rows);

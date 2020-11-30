@@ -16,7 +16,7 @@ router.get('/1', async (req, res, next) => {
 
         const result = await connection.execute(
             `SELECT professor.ProfName FROM professor, teaches
-            WHERE teaches.CourseCode = 'PHY101' AND teaches.ProfId = professor.ProfId`
+                WHERE teaches.CourseCode = 'PHY101' AND teaches.ProfId = professor.ProfId`
             //[103],  // bind value for :id
         );
         console.log(result.rows);
@@ -47,9 +47,9 @@ router.get('/2', async (req, res, next) => {
 
         const result = await connection.execute(
             `SELECT professor.ProfName FROM professor, teaches
-            WHERE teaches.CourseCode = 'PHY101' AND teaches.ProfId = professor.ProfId
-            MINUS (SELECT professor.ProfName FROM teaches, professor 
-                        WHERE teaches.CourseCode = 'BUS100' AND teaches.ProfId = professor.ProfId)`
+                WHERE teaches.CourseCode = 'PHY101' AND teaches.ProfId = professor.ProfId
+                MINUS (SELECT professor.ProfName FROM teaches, professor 
+                    WHERE teaches.CourseCode = 'BUS100' AND teaches.ProfId = professor.ProfId)`
             //[103],  // bind value for :id
         );
         console.log(result.rows);

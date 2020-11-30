@@ -16,9 +16,9 @@ router.get('/1', async (req, res, next) => {
 
         const result = await connection.execute(
             `SELECT DISTINCT student.StudentName FROM student, enrollsin
-            WHERE enrollsin.CourseCode = 'PHY101' 
+                WHERE enrollsin.CourseCode = 'PHY101' 
                 OR enrollsin.CourseCode = 'BUS100'
-            ORDER BY StudentName DESC`
+                ORDER BY StudentName DESC`
             //[103],  // bind value for :id
         );
         console.log(result.rows);
@@ -49,10 +49,10 @@ router.get('/2', async (req, res, next) => {
 
         const result = await connection.execute(
             `SELECT DISTINCT p.ProfName, p.ProfId
-            FROM professor p, teaches
-            WHERE teaches.CourseCode = 'PHY201'
+                FROM professor p, teaches
+                WHERE teaches.CourseCode = 'PHY201'
                 OR teaches.CourseCode = 'MTH210'
-            ORDER BY ProfName`
+                ORDER BY ProfName`
             //[103],  // bind value for :id
         );
         console.log(result.rows);
@@ -83,10 +83,10 @@ router.get('/3', async (req, res, next) => {
 
         const result = await connection.execute(
             `SELECT DISTINCT enrollsin.StudentId 
-            FROM enrollsin, attends, lab
+                FROM enrollsin, attends, lab
                 WHERE (enrollsin.CourseCode = 'PHY201'
-                    AND attends.CourseCode = 'PHY201'
-                    AND lab.LabSectionNum = 1)`
+                AND attends.CourseCode = 'PHY201'
+                AND lab.LabSectionNum = 1)`
             //[103],  // bind value for :id
         );
         console.log(result.rows);
@@ -117,11 +117,11 @@ router.get('/4', async (req, res, next) => {
 
         const result = await connection.execute(
             `SELECT DISTINCT student.StudentId
-            FROM student
-            WHERE EXISTS
-            (SELECT enrollsin.StudentId 
-             FROM professor, teaches, enrollsin
-             WHERE ((teaches.CourseCode = 'BUS100' AND enrollsin.StudentId = student.StudentId)
+                FROM student
+                WHERE EXISTS
+                (SELECT enrollsin.StudentId 
+                FROM professor, teaches, enrollsin
+                WHERE ((teaches.CourseCode = 'BUS100' AND enrollsin.StudentId = student.StudentId)
                 OR (teaches.CourseCode = 'PHY201' AND enrollsin.StudentId = student.StudentId)))`
             //[103],  // bind value for :id
         );
@@ -153,7 +153,7 @@ router.get('/5', async (req, res, next) => {
 
         const result = await connection.execute(
             `SELECT DISTINCT professor.ProfId, professor.ProfName FROM teaches, professor
-            WHERE teaches.CourseCode = 'PHY101'
+                WHERE teaches.CourseCode = 'PHY101'
                 AND teaches.ProfId = professor.ProfId`
             //[103],  // bind value for :id
         );
